@@ -10,7 +10,9 @@ end
 
 require 'sinatra'
 require 'mongo'
-require 'json'
+
+require 'yajl'
+require 'yajl/json_gem'
 
 include Mongo
 
@@ -22,6 +24,8 @@ post "/store/:database/:collection" do
   pure_json_object     = params[:object]
   
   object = JSON.parse(pure_json_object)
+   
+  puts object.inspect
    
   db   = @@mongo.db(database)
   coll = db.collection(collection)
@@ -44,7 +48,7 @@ get "/query/:database/:collection" do
   result         = {}
   result[:count] = data.count
   result[:rows]  = data.collect
-  
+
   content_type 'text/json'
   result.to_json
 end
