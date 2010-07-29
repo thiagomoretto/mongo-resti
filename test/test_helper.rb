@@ -1,4 +1,4 @@
-require "memento"
+require "resti"
 
 require "test/unit"
 require "rack/test"

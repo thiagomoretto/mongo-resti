@@ -1,8 +1,6 @@
 begin
-  # Require the preresolved locked set of gems.
   require ::File.expand_path('../.bundle/environment', __FILE__)
 rescue LoadError
-  # Fallback on doing the resolve at runtime.
   require "rubygems"
   require "bundler"
   Bundler.setup
@@ -24,8 +22,6 @@ post "/store/:database/:collection" do
   pure_json_object     = params[:object]
   
   object = JSON.parse(pure_json_object)
-   
-  puts object.inspect
    
   db   = @@mongo.db(database)
   coll = db.collection(collection)
