@@ -10,7 +10,3 @@ gem "sinatra"
 gem "sinatra-mongoid", :require => "sinatra/mongoid"
 
 gem "rack-test"
-
-# group :test do
-# 	gem "rest_client"
-# end
